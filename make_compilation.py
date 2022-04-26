@@ -93,7 +93,7 @@ def makeCompilation(path = "./",
 
     finalClip = concatenate_videoclips(videos, method="compose")
 
-    audio_path = "/tmp/temoaudiofile.m4a"
+    audio_path = "tmp/temoaudiofile.m4a"
 
     #print(description)
     # Create compilation

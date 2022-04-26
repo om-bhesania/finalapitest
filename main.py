@@ -7,7 +7,6 @@ import time
 import datetime
 import os
 import shutil
-import googleapiclient.errors
 from googleapiclient.discovery import build #pip install google-api-python-client
 from google_auth_oauthlib.flow import InstalledAppFlow #pip install google-auth-oauthlib
 from google.auth.transport.requests import Request

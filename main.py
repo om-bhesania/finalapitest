@@ -1,17 +1,18 @@
-import instaloader
-from scrape_videos import scrapeVideos
-from make_compilation import makeCompilation
-from upload_ytvid import uploadYtvid
-import schedule
-import time
 import datetime
 import os
 import shutil
-from googleapiclient.discovery import build #pip install google-api-python-client
-from google_auth_oauthlib.flow import InstalledAppFlow #pip install google-auth-oauthlib
+import time
+
+import schedule
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow  # pip install google-auth-oauthlib
+from googleapiclient.discovery import build  # pip install google-api-python-client
+
 import config
+from make_compilation import makeCompilation
+from scrape_videos import scrapeVideos
+from upload_ytvid import uploadYtvid
 
 num_to_month = {
     1: "Jan",
@@ -33,16 +34,16 @@ IG_USERNAME = config.IG_USERNAME
 IG_PASSWORD = config.IG_PASSWORD
 print(IG_USERNAME)
 print(IG_PASSWORD)
-title = "TRY NOT TO LAUGH [Best Fails Around]"
+title = "TEST VIDEO"
 now = datetime.datetime.now()
 videoDirectory = "./Todaysfails" + num_to_month[now.month].upper() + "_" + str(now.year) + "_V" + str(now.day) + "/"
 outputFile = "./" + num_to_month[now.month].upper() + "_" + str(now.year) + "_v" + str(now.day) + ".mp4"
 
-INTRO_VID = '/assets/intro-thevoid.mp4' # SET AS '' IF YOU DONT HAVE ONE
-OUTRO_VID = '/assets/outro-thevoid.mp4'
-TOTAL_VID_LENGTH = 13*60
-MAX_CLIP_LENGTH = 19
-MIN_CLIP_LENGTH = 5
+INTRO_VID = '' # SET AS '' IF YOU DONT HAVE ONE
+OUTRO_VID = ''
+TOTAL_VID_LENGTH = 1*1-1*30
+MAX_CLIP_LENGTH = 30
+MIN_CLIP_LENGTH = 2
 DAILY_SCHEDULED_TIME = "20:00"
 TOKEN_NAME = "token.json"
 
@@ -130,6 +131,17 @@ def routine():
         print ("Error: %s - %s." % (e.filename, e.strerror))
     print("Removed temp files!")
 
+
+class Getting:
+    pass
+def escapeshellcmd():
+    pass
+def inputFromPhp(_GET=None, ):
+    # !/usr/local/bin/python3
+    import sys
+    Input = sys.argv[1]
+    print(Input)
+
 def attemptRoutine():
     while(1):
         try:
@@ -145,5 +157,5 @@ schedule.every().day.at(DAILY_SCHEDULED_TIME).do(attemptRoutine)
 attemptRoutine()
 while True:
     schedule.run_pending()  
-    time.sleep(60) # wait one min
+    time.sleep(30) # wait one min
 
